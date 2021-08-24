@@ -1,4 +1,5 @@
 from qt_core import *
+from gui.pages.ui_pages import  Ui_StackedWidget
 
 
 class UI_MainWindow(object):
@@ -26,6 +27,66 @@ class UI_MainWindow(object):
         self.left_menu.setMaximumWidth(50)
         self.left_menu.setMinimumWidth(50)
         # self.left_menu.setMaximumHeight(50)
+
+        # LEFT MENU LAYOUT
+        self.left_menu_layout = QVBoxLayout(self.left_menu)
+        self.left_menu_layout.setContentsMargins(0, 0, 0, 0)
+        self.left_menu_layout.setSpacing(0)
+
+        # TOP FRAME MENU
+        self.left_menu_top_frame = QFrame()
+        self.left_menu_top_frame.setMinimumHeight(50)
+        self.left_menu_top_frame.setObjectName('left_menu_top_frame')
+        self.left_menu_top_frame.setStyleSheet("#left_menu_top_frame { background-color: red; }")
+        
+        # TOP FRAME LAYOUT
+        self.left_menu_top_layout = QVBoxLayout(self.left_menu_top_frame)
+        self.left_menu_top_layout.setContentsMargins(0, 0, 0, 0)
+        self.left_menu_top_layout.setSpacing(0)
+
+        # TOP BTTNS
+        self.toggle_button = QPushButton("Toggle")
+        self.btn_1 = QPushButton("1")
+        self.btn_2 = QPushButton("2")
+
+        # ADD BTNS TO LAYOUT
+        self.left_menu_top_layout.addWidget(self.toggle_button)
+        self.left_menu_top_layout.addWidget(self.btn_1)
+        self.left_menu_top_layout.addWidget(self.btn_2)
+
+        # MENU SPACER
+        self.left_menu_spacer = QSpacerItem(20, 20, QSizePolicy.Minimum, QSizePolicy.Expanding)
+
+        # BOTTOM FRAME MENU
+        self.left_menu_bottom_frame = QFrame()
+        self.left_menu_bottom_frame.setMinimumHeight(50)
+        self.left_menu_bottom_frame.setObjectName('left_menu_button_frame')
+        self.left_menu_bottom_frame.setStyleSheet("#left_menu_button_frame { background-color: red; }")
+
+        self.left_menu_bottom_layout = QVBoxLayout(self.left_menu_bottom_frame)
+        self.left_menu_bottom_layout.setContentsMargins(0, 0, 0, 0)
+        self.left_menu_bottom_layout.setSpacing(0)
+
+        # TOP BTTNS
+        self.btn_settings = QPushButton("Settings")
+
+        # ADD BTNS TO LAYOUT
+        self.left_menu_bottom_layout.addWidget(self.btn_settings)
+
+
+        # LABEL VERSION
+        self.left_menu_label_version = QLabel('v1.0.0')
+        self.left_menu_label_version.setAlignment(Qt.AlignCenter)
+        self.left_menu_label_version.setMinimumHeight(30)
+        self.left_menu_label_version.setMaximumHeight(30)
+        self.left_menu_label_version.setStyleSheet("color: #c3ccdf")
+
+        # ADD TO LAYOUT
+        self.left_menu_layout.addWidget(self.left_menu_top_frame)
+        self.left_menu_layout.addItem(self.left_menu_spacer)
+        self.left_menu_layout.addWidget(self.left_menu_bottom_frame)
+        self.left_menu_layout.addWidget(self.left_menu_label_version)
+
 
         # CONTENT
         self.content = QFrame()
@@ -87,6 +148,9 @@ class UI_MainWindow(object):
         # APPLICATION PAGES
         self.pages = QStackedWidget()
         self.pages.setStyleSheet("font-size: 12pt; color: #f8f8f2")
+        self.ui_pages = Ui_StackedWidget()
+        self.ui_pages.setupUi(self.pages)
+        self.pages.setCurrentWidget(self.ui_pages.page_1)
 
         # ADD TO CONTENT LAYOUT
         self.content_layout.addWidget(self.top_bar)
