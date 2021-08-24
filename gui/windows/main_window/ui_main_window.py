@@ -36,17 +36,53 @@ class UI_MainWindow(object):
         self.content_layout.setContentsMargins(0, 0, 0, 0)
         self.content_layout.setSpacing(0)
 
+
         # TOP BAR
         self.top_bar = QFrame()
         self.top_bar.setStyleSheet("background-color: #21232d; color: #6272a4")
         self.top_bar.setMinimumHeight(30)
         self.top_bar.setMaximumHeight(30)
+        self.top_bar_layout = QHBoxLayout(self.top_bar)
+        self.top_bar_layout.setContentsMargins(10, 0, 10, 0)
+
+        # LEFT LABEL
+        self.top_label_left = QLabel("Essa é minha primeira aplicação com PySide6")
+
+        # TOP SPACER
+        self.top_spacer = QSpacerItem(20, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        # RIGHT LABEL
+        self.top_label_right = QLabel("| PÁGINA INICIAL")
+        self.top_label_right.setStyleSheet("font: 700 9pt 'Segoe UI'")
+
+        # ADD TO LAYOUT
+        self.top_bar_layout.addWidget(self.top_label_left)
+        self.top_bar_layout.addItem(self.top_spacer)
+        self.top_bar_layout.addWidget(self.top_label_right)
+
 
         # BOTTOM BAR
         self.bottom_bar = QFrame()
         self.bottom_bar.setStyleSheet("background-color: #21232d; color: #6272a4")
         self.bottom_bar.setMinimumHeight(30)
         self.bottom_bar.setMaximumHeight(30)
+        self.bottom_bar_layout = QHBoxLayout(self.bottom_bar)
+        self.bottom_bar_layout.setContentsMargins(10, 0, 10, 0)
+
+        # Left Labels
+        self.bottom_label_left = QLabel("Feito por: Gabriel A. Vieira")
+        
+        # BOTTOM SPACER
+        self.bottom_spacer = QSpacerItem(20, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        # RIGHT LABEL
+        self.bottom_label_right = QLabel("© 2021")
+
+        # ADD TO LAYOUT
+        self.bottom_bar_layout.addWidget(self.bottom_label_left)
+        self.bottom_bar_layout.addItem(self.bottom_spacer)
+        self.bottom_bar_layout.addWidget(self.bottom_label_right)
+
 
         # APPLICATION PAGES
         self.pages = QStackedWidget()
